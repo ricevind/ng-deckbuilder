@@ -1,3 +1,11 @@
+# angular_cli_HMR
+Angular CLI based boilerplate with HMR support within application
+
+This configuration doesn't retain app state on component's CSS changes.
+Using ngrx/store with HMR might help (TODO in future)
+## Running HMR Development server
+
+Run `ng hmr`
 
 # AngCliHmr
 
@@ -28,12 +36,3 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-# angular_cli_HMR
-Angular CLI based boilerplate with HMR support within application
-
-This configuration doesn't retain app state on component's CSS changes.
-Using ngrx/store with HMR might help (TODO in future)
->>>>>>> origin/master
-## Running HMR Development server
-
-Run `ng hmr`

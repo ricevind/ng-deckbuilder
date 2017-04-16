@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
-  count = 1;
 
-  add() {
-    this.count += 1;
-  }
 }

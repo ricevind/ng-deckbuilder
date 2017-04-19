@@ -3,7 +3,7 @@ import { Http, RequestOptions, Headers, Response} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { Card } from './card';
+import { Card } from '../shared/card';
 
 const HS_API_KEY = 'PHAlPHeCasmshMGkZwsEdGaLMAiQp1BV8ECjsnCpoi7ekvH4Ay';
 const HS_API_HEADER = 'X-Mashape-Key';

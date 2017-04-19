@@ -7,19 +7,17 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CardSearchModule } from './card-search/card-search.module';
-import { CardComponent } from './shared/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    CardSearchModule
+    CardSearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

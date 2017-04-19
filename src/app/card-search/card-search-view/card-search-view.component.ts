@@ -12,11 +12,11 @@ export class CardSearchViewComponent implements OnInit {
   public card: Card;
 
   constructor(private hsApi: HsApiService) {
-    this.hsApi.getCardByName('Ysera').subscribe(r => {this.card = r; });
 
   }
 
   ngOnInit() {
+    this.hsApi.getCardByName('Ysera').subscribe(r => {this.card = r; });
   }
 
 }

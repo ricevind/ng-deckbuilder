@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HsApiService } from '../hs-api.service';
 import { Observable } from 'rxjs/Observable';
-import { Card } from '../card';
+import { Card } from '../../shared/card';
 
 @Component({
   selector: 'app-card-search-view',

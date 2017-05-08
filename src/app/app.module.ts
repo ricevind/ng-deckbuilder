@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CardSearchModule } from './card-search/card-search.module';
+import { InfoService } from './info.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { CardSearchModule } from './card-search/card-search.module';
     AppRoutingModule,
     CardSearchModule,
   ],
-  providers: [],
+  providers: [InfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

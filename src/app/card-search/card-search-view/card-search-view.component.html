@@ -1,4 +1,6 @@
+<app-card-search-form #form (onClear)="clear()"></app-card-search-form>
 <p>
-    card-search-view works! {{ card | json }}
-    <app-card *ngIf="card" [card]="card"></app-card>
+    <ng-container *ngIf="cards">
+        <app-card  *ngFor="let card of cards" [card]="card"></app-card>
+    </ng-container>
 </p>

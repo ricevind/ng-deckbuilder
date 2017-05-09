@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@ang
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Info } from '../../info';
 import { InfoService } from '../../info.service';
-import { Query } from '../../shared/query';
+import { Query } from '../../shared/models/query';
 
 @Component({
   selector: 'app-card-search-form',

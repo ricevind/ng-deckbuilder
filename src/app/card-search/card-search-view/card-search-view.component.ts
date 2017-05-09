@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
-import { Card } from '../../shared/card';
-import { Query } from '../../shared/query';
+import { Card } from '../../shared/models/card';
+import { Query } from '../../shared/models/query';
 
 @Component({
   selector: 'app-card-search-view',

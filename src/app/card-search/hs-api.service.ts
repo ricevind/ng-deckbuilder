@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 
-import { Card } from '../shared/card';
+import { Card } from '../shared/models/card';
 
 const HS_API_KEY = 'PHAlPHeCasmshMGkZwsEdGaLMAiQp1BV8ECjsnCpoi7ekvH4Ay';
 const HS_API_HEADER = 'X-Mashape-Key';

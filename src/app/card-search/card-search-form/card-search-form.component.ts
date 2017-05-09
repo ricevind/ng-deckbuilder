@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@ang
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Info } from '../../info';
 import { InfoService } from '../../info.service';
+import { Query } from '../../shared/query';
 
 @Component({
   selector: 'app-card-search-form',
@@ -9,7 +10,7 @@ import { InfoService } from '../../info.service';
   styleUrls: ['./card-search-form.component.scss']
 })
 export class CardSearchFormComponent implements OnInit {
-  @Output() query: EventEmitter<string> = new EventEmitter();
+  @Output() onQuery: EventEmitter<string> = new EventEmitter();
   @Output() onClear: EventEmitter<string> = new EventEmitter();
   searchForm: FormGroup;
   info: Info;
@@ -25,7 +26,7 @@ export class CardSearchFormComponent implements OnInit {
         this.clear();
         return;
       }
-      this.query.emit(value); console.log(value)
+      this.onQuery.emit(value);
     });
   }
 
@@ -34,7 +35,6 @@ export class CardSearchFormComponent implements OnInit {
       search: '',
       class: ''
     };
-
     this.searchForm = this.fb.group(formModel);
   }
 

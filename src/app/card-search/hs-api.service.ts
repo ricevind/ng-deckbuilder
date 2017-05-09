@@ -42,4 +42,11 @@ export class HsApiService {
 
    }
 
+   getCardsByClass(classHS: string): Observable<Card[]> {
+    const url = `https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/${classHS}?collectible=1`;
+      return this._get(url)
+        .map((cards: Response) => cards.json())
+        .catch((e) => Observable.of(`plis dont die ${e}`));
+   }
+
 }

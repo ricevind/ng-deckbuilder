@@ -1,43 +1,35 @@
 import { Component, OnInit, OnChanges, ViewChild, AfterViewInit } from '@angular/core';
 import { HsApiService } from '../hs-api.service';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import { Card } from '../../shared/card';
-import { CardSearchFormComponent } from '../card-search-form/card-search-form.component';
-import { Subscription } from 'rxjs/Subscription';
+import { Query } from '../../shared/query';
 
 @Component({
   selector: 'app-card-search-view',
   templateUrl: './card-search-view.component.html',
   styleUrls: ['./card-search-view.component.scss']
 })
-export class CardSearchViewComponent implements OnInit, OnChanges, AfterViewInit {
+export class CardSearchViewComponent implements OnInit, OnChanges {
   cards: Card[];
-  @ViewChild('form') formComp: CardSearchFormComponent;
-  callForCards: Subscription;
+  callForCards: Subject<any> = new Subject();
 
   constructor(private hsApi: HsApiService) {
 
   }
 
   ngOnInit() {
-  }
-
-  ngOnChanges(changes) {
-    console.log(changes, '<----changes')
-  }
-
-  ngAfterViewInit() {
-    this.onCard();
-  }
-
-  onCard(): void {
-    this.callForCards = this.formComp.query
+    this.callForCards
       .debounceTime(500)
       .switchMap((e) => {
-        console.log(this.hsApi.searchCards(e))
-        return this.hsApi.searchCards(e);
+        console.log(e);
+        if (e.class) {
+          return this.hsApi.getCardsByClass(e.class);
+        } else {
+          return this.hsApi.searchCards(e.search);
+        }
       })
       .subscribe(r => {
         this.cards = r;
@@ -45,10 +37,17 @@ export class CardSearchViewComponent implements OnInit, OnChanges, AfterViewInit
       (error) => console.log(error));
   }
 
+  ngOnChanges(changes) {
+    console.log(changes, '<----changes');
+  }
+
+
+  query(query): void {
+    this.callForCards.next(query);
+  }
+
   clear() {
     this.cards = [];
-    this.callForCards.unsubscribe();
-    this.onCard();
   }
 
 }

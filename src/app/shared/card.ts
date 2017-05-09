@@ -1,5 +1,4 @@
 export interface Card {
-
     'cardId': '';
     'name': '';
     'cardSet'?: '';
@@ -18,5 +17,4 @@ export interface Card {
     'img': '';
     'imgGold'?: '';
     'locale'?: '';
-
 }

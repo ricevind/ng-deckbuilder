@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+}
+
+.card-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.card-bar__cost {
+  margin-left: auto;
+}
+
+.card-bar__count {
+  padding-right: 30px;
+}

@@ -1,3 +1,5 @@
-  <p *ngFor="let card of deck.cards">
-  Name: {{card?.card.name}} - count: {{card?.count}}
-  </p>
+  <card-bar *ngFor="let card of deck.cards"
+            [cardName]="card.card.name"
+            [cardCost]="card.card.cost"
+            [cardCount]="card.count">
+  </card-bar>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardSearchViewComponent } from './card-search-view.component';
+import { CardBarComponent } from './card-bar.component';
 
-describe('CardSearchViewComponent', () => {
-  let component: CardSearchViewComponent;
-  let fixture: ComponentFixture<CardSearchViewComponent>;
+describe('CardBarComponent', () => {
+  let component: CardBarComponent;
+  let fixture: ComponentFixture<CardBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardSearchViewComponent ]
+      declarations: [ CardBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardSearchViewComponent);
+    fixture = TestBed.createComponent(CardBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,1 +1,4 @@
-<img *ngIf="isLoaded" [src]="image.src">
+<img 
+    *ngIf="isLoaded"
+    (click)="onClick()" 
+    [src]="image.src">

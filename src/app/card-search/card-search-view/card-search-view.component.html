@@ -1,6 +1,6 @@
 <app-card-search-form (onClear)="clear()" (onQuery)="query($event)"></app-card-search-form>
 <p>
     <ng-container *ngIf="cards">
-        <app-card  *ngFor="let card of cards" [card]="card"></app-card>
+        <card (sendCard)="addCardToDeck($event)"  *ngFor="let card of cards" [card]="card"></card>
     </ng-container>
 </p>

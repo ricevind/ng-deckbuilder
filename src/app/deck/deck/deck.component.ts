@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Deck } from '../../shared/models/deck';
+import { DeckService } from '../deck.service';
 
 @Component({
   selector: 'deck',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deck.component.scss']
 })
 export class DeckComponent implements OnInit {
+  public deck: Deck;
 
-  constructor() { }
+  constructor(
+    private deckService: DeckService
+  ) { }
 
   ngOnInit() {
+    this.deckService.deckStream.subscribe((deck: Deck) => {
+      this.deck = deck;
+      console.log(this.deck)
+    });
   }
 
 }

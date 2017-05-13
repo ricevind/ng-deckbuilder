@@ -6,6 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import { Card } from '../../shared/models/card';
 import { Query } from '../../shared/models/query';
+import { DeckService } from '../../deck/deck.service';
 
 @Component({
   selector: 'app-card-search-view',
@@ -16,7 +17,10 @@ export class CardSearchViewComponent implements OnInit, OnChanges {
   cards: Card[];
   callForCards: Subject<any> = new Subject();
 
-  constructor(private hsApi: HsApiService) {}
+  constructor(
+    private hsApi: HsApiService,
+    private deckService: DeckService
+  ) {}
 
   ngOnInit() {
     this.callForCards
@@ -46,6 +50,10 @@ export class CardSearchViewComponent implements OnInit, OnChanges {
 
   clear() {
     this.cards = [];
+  }
+
+  addCardToDeck(card: Card) {
+    this.deckService.addCard(card);
   }
 
 }

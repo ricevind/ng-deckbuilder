@@ -16,9 +16,7 @@ export class CardSearchViewComponent implements OnInit, OnChanges {
   cards: Card[];
   callForCards: Subject<any> = new Subject();
 
-  constructor(private hsApi: HsApiService) {
-
-  }
+  constructor(private hsApi: HsApiService) {}
 
   ngOnInit() {
     this.callForCards

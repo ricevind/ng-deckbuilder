@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { DeckService } from './deck.service';
-import { CardImageDirective } from './card-image.directive';
 
 @NgModule({
   imports: [
@@ -10,7 +9,6 @@ import { CardImageDirective } from './card-image.directive';
   ],
   declarations: [
     CardComponent,
-    CardImageDirective
   ],
   exports: [
     CardComponent,

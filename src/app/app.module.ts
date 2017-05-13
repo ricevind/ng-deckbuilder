@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CardSearchModule } from './card-search/card-search.module';
+import { DeckModule } from './deck/deck.module';
 
 import { AppComponent } from './app.component';
-import { CardSearchModule } from './card-search/card-search.module';
 import { InfoService } from './info.service';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { InfoService } from './info.service';
     HttpModule,
     AppRoutingModule,
     CardSearchModule,
+    DeckModule
   ],
   providers: [InfoService],
   bootstrap: [AppComponent]

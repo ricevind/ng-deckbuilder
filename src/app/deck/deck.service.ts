@@ -44,13 +44,16 @@ export class DeckService {
       return;
     }
     const count = this._cardInDeck(card);
-    console.log(this.cardCount);
     switch (count) {
       case 0:
         this.cardCount += 1;
         this._addCard(card);
         break;
       case 1:
+        console.log(card.rarity)
+        if (card.rarity === 'Legendary') {
+          return;
+        }
         this.cardCount += 1;
         this._incrementCard(card);
         break;
@@ -60,7 +63,6 @@ export class DeckService {
   removeCard(card: Card): void {
     const count = this._cardInDeck(card);
     this.cardCount -= 1;
-    console.log(this.cardCount);
     switch (count) {
       case 2:
         this._decrementCard(card);

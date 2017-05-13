@@ -10,10 +10,12 @@ export class CardBarComponent implements OnInit {
   @Input() card: Card;
   @Input() cardCount: string;
   @Output() removeCard = new EventEmitter<Card>();
+  public countity: number;
 
   constructor() { }
 
   ngOnInit() {
+    this.countity = this.card.rarity === 'Legendary' ? 1 : 2;
   }
 
   onClick() {

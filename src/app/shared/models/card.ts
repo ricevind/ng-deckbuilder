@@ -1,20 +1,20 @@
 export interface Card {
-    'cardId': '';
-    'name': '';
-    'cardSet'?: '';
-    'type'?: '';
-    'faction'?: '';
-    'rarity'?: '';
+    'cardId': string;
+    'name': string;
+    'cardSet'?: string;
+    'type'?: string;
+    'faction'?: string;
+    'rarity'?: string;
     'cost': number;
     'attack': number;
     'health': number;
-    'text'?: '';
-    'flavor'?: '';
-    'artist'?: '';
+    'text'?: string;
+    'flavor'?: string;
+    'artist'?: string;
     'collectible'?: boolean;
     'elite'?: boolean;
-    'race'?: '';
-    'img': '';
-    'imgGold'?: '';
-    'locale'?: '';
+    'race'?: string;
+    'img': string;
+    'imgGold'?: string;
+    'locale'?: string;
 }

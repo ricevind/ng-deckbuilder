@@ -19,7 +19,6 @@ export class DeckComponent implements OnInit {
   ngOnInit() {
     this.deckService.deckStream.subscribe((deck: Deck) => {
       this.deck = deck;
-      console.log(this.deck)
     });
   }
 

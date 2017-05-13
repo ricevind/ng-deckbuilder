@@ -12,6 +12,7 @@ const NEW_DECK = 'newdeck';
 export class DeckService {
   private _deck: BehaviorSubject<Deck>;
   private deck$: Observable<Deck>;
+  private cardCount = 0;
 
   constructor() {
     this.initSubject();
@@ -35,17 +36,22 @@ export class DeckService {
 
   setDeck(deck: Deck): void {
     const newDeck = JSON.parse(JSON.stringify(deck));
-    console.log(newDeck);
     this._deck.next(newDeck);
   }
 
   addCard(card: Card): void {
+    if (this.cardCount >= 30) {
+      return;
+    }
     const count = this._cardInDeck(card);
+    console.log(this.cardCount);
     switch (count) {
       case 0:
+        this.cardCount += 1;
         this._addCard(card);
         break;
       case 1:
+        this.cardCount += 1;
         this._incrementCard(card);
         break;
     }
@@ -53,6 +59,8 @@ export class DeckService {
 
   removeCard(card: Card): void {
     const count = this._cardInDeck(card);
+    this.cardCount -= 1;
+    console.log(this.cardCount);
     switch (count) {
       case 2:
         this._decrementCard(card);

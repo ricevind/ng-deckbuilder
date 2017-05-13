@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Card } from '../../shared/models/card';
 
 @Component({
   selector: 'card-bar',
@@ -6,13 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card-bar.component.scss']
 })
 export class CardBarComponent implements OnInit {
-  @Input() cardName: string;
-  @Input() cardCost: string;
+  @Input() card: Card;
   @Input() cardCount: string;
+  @Output() removeCard = new EventEmitter<Card>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onClick() {
+    this.removeCard.emit(this.card);
+  }
 }

@@ -1,5 +1,5 @@
   <card-bar *ngFor="let card of deck.cards"
-            [cardName]="card.card.name"
-            [cardCost]="card.card.cost"
-            [cardCount]="card.count">
+            [card]="card.card"
+            [cardCount]="card.count"
+            (removeCard)="onRemoveCard($event)">
   </card-bar>

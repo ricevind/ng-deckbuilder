@@ -63,7 +63,7 @@ export class DeckService {
     }
   }
 
-  _addCard(card: Card): void {
+  private _addCard(card: Card): void {
     const cardMeta = {
       card: card,
       count: 1
@@ -73,7 +73,7 @@ export class DeckService {
     this.setDeck(currentDeck);
   }
 
-  _incrementCard(card: Card): void {
+  private _incrementCard(card: Card): void {
     const currentDeck = this.getDeck();
     const cardName = card.name;
     currentDeck.cards.map((cardMeta) => {
@@ -84,7 +84,7 @@ export class DeckService {
     this.setDeck(currentDeck);
   }
 
-  _removeCard(card: Card) {
+  private _removeCard(card: Card) {
     const cardName = card.name;
     const currentDeck = this.getDeck();
     const updatedCards = currentDeck.cards.filter((cardMeta) => {
@@ -94,7 +94,7 @@ export class DeckService {
     this.setDeck(currentDeck);
   }
 
-  _decrementCard(card: Card) {
+  private _decrementCard(card: Card) {
     const currentDeck = this.getDeck();
     const cardName = card.name;
     currentDeck.cards.map((cardMeta) => {
@@ -105,7 +105,7 @@ export class DeckService {
     this.setDeck(currentDeck);
   }
 
-  _cardInDeck(card: Card): number {
+  private _cardInDeck(card: Card): number {
     let cardInDeck = 0;
     const cardName = card.name;
     const currentDeck = this.getDeck();

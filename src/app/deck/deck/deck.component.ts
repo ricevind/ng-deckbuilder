@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Deck } from '../../shared/models/deck';
 import { DeckService } from '../deck.service';
+import { Card } from '../../shared/models/card';
 
 @Component({
   selector: 'deck',
@@ -20,6 +21,10 @@ export class DeckComponent implements OnInit {
       this.deck = deck;
       console.log(this.deck)
     });
+  }
+
+  onRemoveCard(card: Card): void {
+    this.deckService.removeCard(card);
   }
 
 }

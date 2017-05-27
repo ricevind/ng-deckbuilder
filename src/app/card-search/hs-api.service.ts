@@ -10,6 +10,7 @@ import { Card } from '../shared/models/card';
 
 const HS_API_KEY = 'PHAlPHeCasmshMGkZwsEdGaLMAiQp1BV8ECjsnCpoi7ekvH4Ay';
 const HS_API_HEADER = 'X-Mashape-Key';
+const API_URL = 'https://omgvamp-hearthstone-v1.p.mashape.com';
 
 @Injectable()
 export class HsApiService {
@@ -20,7 +21,7 @@ export class HsApiService {
     HeadersObject[HS_API_HEADER] = HS_API_KEY;
 
     this.Header = new Headers(HeadersObject);
-   }
+  }
 
    private _get(url: string): Observable<Response> {
     const Options: RequestOptions = new RequestOptions({headers: this.Header});
@@ -28,14 +29,14 @@ export class HsApiService {
   }
 
    getCardByName(name: string): Observable<Card> {
-    const url = `https://omgvamp-hearthstone-v1.p.mashape.com/cards/${name}`;
+    const url = `${API_URL}/cards/${name}`;
     return this._get(url).map(r => {
       return r.json()[0];
     });
    }
 
    searchCards(query: string): Observable<Card[]> {
-    const url = `https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/${query}?collectible=1`;
+    const url = `${API_URL}/cards/search/${query}?collectible=1`;
       return this._get(url)
         .map((cards: Response) => cards.json())
         .catch((e) => Observable.of(`plis dont die ${e}`));
@@ -43,10 +44,9 @@ export class HsApiService {
    }
 
    getCardsByClass(classHS: string): Observable<Card[]> {
-    const url = `https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/${classHS}?collectible=1`;
+    const url = `${API_URL}/cards/classes/${classHS}?collectible=1`;
       return this._get(url)
         .map((cards: Response) => cards.json())
         .catch((e) => Observable.of(`plis dont die ${e}`));
    }
-
 }

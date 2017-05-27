@@ -2,3 +2,17 @@
 
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
+
+.app-card {
+  display: inline-block;
+  width: 160px;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  & img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%)  scale(0.6);
+  }
+}

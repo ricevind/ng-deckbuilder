@@ -7,6 +7,7 @@ import { CardSearchViewComponent } from './card-search-view/card-search-view.com
 import { SharedModule } from '../shared/shared.module';
 import { CardSearchFormComponent } from './card-search-form/card-search-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardSearchComponent } from './card-search.component';
 
 @NgModule({
   imports: [
@@ -18,9 +19,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     CardSearchViewComponent,
     CardSearchFormComponent,
+    CardSearchComponent,
   ],
   exports: [
-    CardSearchViewComponent,
+    CardSearchComponent
   ],
   providers: [
     HsApiService,

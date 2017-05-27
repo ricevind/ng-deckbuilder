@@ -1,0 +1,14 @@
+<div class="nav">
+  <a routerLink='login'>Login</a>
+  <a routerLink='build-deck'>Deck Builder</a>
+  <span  class="nav__signup">
+    <a routerLink='signup'>
+        Register
+    </a>
+    <a (click)="logout()"
+       *ngIf="isLogged"
+        class="nav__signup">
+        Log out
+    </a>
+  </span>
+</div>

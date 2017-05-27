@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Card } from '../shared/models/card';
-import { Deck } from '../shared/models/deck';
+import { Deck, CardCount } from '../shared/models/deck';
 
 const NEW_DECK = 'newdeck';
 
@@ -14,16 +14,13 @@ export class DeckService {
   private deck$: Observable<Deck>;
   private cardCount = 0;
 
-  constructor() {
-    this.initSubject();
-    this.deck$ = this._deck.asObservable();
-   }
+  constructor() {}
 
-  initSubject(): void {
-      this._deck = new BehaviorSubject({
-        name: NEW_DECK,
-        cards: []
-      });
+  initSubject(deck: Deck): void {
+    const initDeck = deck ? deck : { name: NEW_DECK, cards: [] };
+    this._deck = new BehaviorSubject(initDeck);
+    this.deck$ = this._deck.asObservable();
+    this.countCards();
   }
 
   get deckStream(): Observable<Deck> {
@@ -39,6 +36,13 @@ export class DeckService {
     this._deck.next(newDeck);
   }
 
+  countCards() {
+    const currentDeck = this.getDeck();
+    this.cardCount = currentDeck.cards.reduce((count: number, currentCard: CardCount): number => {
+      return currentCard.count + count;
+    }, 0);
+  }
+
   addCard(card: Card): void {
     if (this.cardCount >= 30) {
       return;
@@ -50,7 +54,6 @@ export class DeckService {
         this._addCard(card);
         break;
       case 1:
-        console.log(card.rarity)
         if (card.rarity === 'Legendary') {
           return;
         }

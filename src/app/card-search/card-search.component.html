@@ -1,0 +1,8 @@
+<card-search-form (onClear)="clear()" 
+                  (onQuery)="query($event)">
+</card-search-form>
+<div *ngIf="loading">its loading</div>
+
+<card-search-view [cards]="cards"
+                  (addCard)="addCardToDeck($event)">
+</card-search-view>

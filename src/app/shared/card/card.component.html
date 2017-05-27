@@ -1,4 +1,6 @@
-<img 
-    *ngIf="isLoaded"
-    (click)="onClick()" 
-    [src]="image.src">
+<div #cardDiv [@dialog]
+    class="app-card"
+    [hidden]="!isLoaded"
+    (click)="onClick()"> 
+</div>
+

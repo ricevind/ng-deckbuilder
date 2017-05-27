@@ -1,5 +1,8 @@
-  <card-bar *ngFor="let card of deck.cards"
-            [card]="card.card"
-            [cardCount]="card.count"
-            (removeCard)="onRemoveCard($event)">
-  </card-bar>
+  <div class="deck">
+    <card-bar *ngFor="let card of deck?.cards"
+              [card]="card.card"
+              [cardCount]="card.count"
+              (removeCard)="onRemoveCard($event)">
+    </card-bar>
+    <button type="button" (click)="onSaveDeck()">Save</button>
+</div>

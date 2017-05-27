@@ -4,23 +4,32 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { CardSearchModule } from './card-search/card-search.module';
-import { DeckModule } from './deck/deck.module';
 
 import { AppComponent } from './app.component';
 import { InfoService } from './info.service';
+import { DeckBuilderModule } from './deck-builder/deck-builder.module';
+import { NavComponent } from './nav/nav.component';
+import { LoginModule } from './login/login.module';
+import { AngularFireModule } from 'angularfire2/angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     AppRoutingModule,
-    CardSearchModule,
-    DeckModule
+    DeckBuilderModule,
+    LoginModule,
+    SharedModule,
   ],
   providers: [InfoService],
   bootstrap: [AppComponent]

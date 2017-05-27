@@ -1,5 +1,6 @@
 <div class="card-bar"
-     (click)="onClick()">
+     (click)="onClick()"
+     [rarity]="card.rarity" [card]="card">
   <div class="card-bar__count">{{cardCount}}/{{countity}}</div>
   <div class="card-bar__name">{{card.name}}</div>
   <div class="card-bar__cost">{{card.cost}}</div>

@@ -1,6 +1,6 @@
 import { Card } from './card';
 
-interface CardCount {
+export interface CardCount {
     card: Card;
     count: number;
 }

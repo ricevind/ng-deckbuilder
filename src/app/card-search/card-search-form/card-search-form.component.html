@@ -2,7 +2,7 @@
     <input type="text" formControlName="search"> 
     <select  formControlName="class">
       <option value="" disabled selected>Klasa</option>
-      <option *ngFor="let class of info?.classes" name="class" [value]="class">{{class}}</option>
+      <option *ngFor="let class of info?.classes" name="classSelect" [value]="class">{{class}}</option>
     </select>
+    <span (click)="clear()">x</span>
   </form>
-  <span (click)="clear()">x</span>

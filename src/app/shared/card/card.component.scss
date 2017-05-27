@@ -1,4 +1,9 @@
-img {
+
+md-progress-spinner {
+    display: inline-block;
     max-width: 150px;
-    height: auto;
+}
+:host {
+  display: block;
+  overflow: hidden;
 }

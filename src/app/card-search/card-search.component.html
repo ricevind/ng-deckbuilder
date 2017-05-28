@@ -4,5 +4,6 @@
 <div *ngIf="loading">its loading</div>
 
 <card-search-view [cards]="cards"
+                  [filter]="filter"
                   (addCard)="addCardToDeck($event)">
 </card-search-view>

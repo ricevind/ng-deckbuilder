@@ -3,6 +3,7 @@ import { Card } from '../shared/models/card';
 import { Subject } from 'rxjs/Subject';
 import { HsApiService } from './hs-api.service';
 import { DeckService } from '../deck/deck.service';
+import { SearchForm } from './card-search-form/card-search-form.component';
 
 @Component({
   selector: 'card-search',
@@ -13,6 +14,7 @@ export class CardSearchComponent implements OnInit {
   cards: Card[];
   callForCards: Subject<any> = new Subject();
   loading: boolean;
+  filter: string;
 
   constructor(
     private hsApi: HsApiService,
@@ -37,11 +39,13 @@ export class CardSearchComponent implements OnInit {
   }
 
 
-  query(query): void {
+  query(query: SearchForm): void {
+    this.filter = query.search;
     this.callForCards.next(query);
   }
 
   clear() {
+    this.callForCards.next({search: '', class: ''});
     this.cards = [];
   }
 

@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CardSearchFormComponent } from './card-search-form/card-search-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardSearchComponent } from './card-search.component';
+import { CardFilterPipe } from './card-search-filter.pipe';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { CardSearchComponent } from './card-search.component';
     CardSearchViewComponent,
     CardSearchFormComponent,
     CardSearchComponent,
+    CardFilterPipe
   ],
   exports: [
     CardSearchComponent

@@ -8,6 +8,7 @@ import { Card } from '../../shared/models/card';
 })
 export class CardSearchViewComponent {
   @Input()  cards: Card[];
+  @Input() filter: string;
   @Output() addCard: EventEmitter<Card> = new EventEmitter();
 
   cardClick(card: Card): void {

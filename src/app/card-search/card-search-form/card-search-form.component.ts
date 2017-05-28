@@ -36,12 +36,12 @@ export class CardSearchFormComponent implements OnInit {
 
   ngOnInit() {
     this.info = this.infoService.getInfo;
-    console.log(this.info);
     this.buildForm();
     this.searchForm.valueChanges
     .distinctUntilChanged()
     .subscribe((value) => {
-      if (value.search === '' && value.class === '') {
+      if (!value.search && !value.class) {
+        console.log('clear motefuka')
         this.clear();
         return;
       }
@@ -57,7 +57,7 @@ export class CardSearchFormComponent implements OnInit {
   }
 
   clear() {
-    this.searchForm.patchValue({search: ''}, {emitEvent: false});
+    this.searchForm.reset({}, {emitEvent: false});
     this.onClear.emit();
   }
 

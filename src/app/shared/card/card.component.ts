@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy, ViewChild, Output, EventEmitter, E
 import { Card } from '../models/card';
 import { CardsImageService } from '../services/cards-image.service';
 import { Subscription } from 'rxjs/Subscription';
-import { trigger, transition, style, animate } from "@angular/animations";
+import { trigger, transition, style, animate, state } from "@angular/animations";
 
 @Component({
   selector: 'card',
@@ -10,26 +10,22 @@ import { trigger, transition, style, animate } from "@angular/animations";
   styleUrls: ['./card.component.scss'],
    animations: [
     trigger('dialog', [
-      transition('void => *', [
-        style({ height: '0' }),
-        animate(500, style({ height: '240px' }))
-      ]),
-      transition('* => void', [
-        style({ height: '240px' }),
-        animate(200, style({ height: '0' }))
-      ])
+      state('in', style({ height: '0' })),
+      state('out', style({ height: '240px' })),
+      transition('in <=> out', animate(500)),
     ])
-  ]
+   ]
 })
 export class CardComponent implements OnInit, OnDestroy {
   @Input() card: Card;
   @Output() sendCard = new EventEmitter();
   @ViewChild('cardDiv') cardElement: ElementRef;
-  @HostBinding('@dialog') get dialog() {return true}
+  @HostBinding('@dialog') get dialog() {return this.isAnimate};
 
   public image: HTMLImageElement;
   public isLoaded = false;
   private image$: Subscription;
+  public isAnimate = 'out';
 
   constructor(private csi: CardsImageService) { }
 

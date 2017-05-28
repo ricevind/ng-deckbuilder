@@ -25,11 +25,11 @@ export class RarityDirective implements OnInit {
   @Input() card: Card;
   @HostListener('mouseenter') hostStyles() {
     (this.elem.nativeElement as HTMLElement).style.backgroundColor = 'red';
-    this.injectImage();
+    this.cardComponent.instance.isAnimate = 'out';
   };
   @HostListener('mouseleave') hostStylesRevoke() {
     (this.elem.nativeElement as HTMLElement).style.backgroundColor = RARITY_COLOR[this.rarity];
-    this.destroyImage();
+    this.cardComponent.instance.isAnimate = 'in';
   };
 
   constructor(
@@ -46,15 +46,16 @@ export class RarityDirective implements OnInit {
   ngOnInit() {
     (this.elem.nativeElement as HTMLElement).style.backgroundColor = RARITY_COLOR[this.rarity];
     this.initCardComponent();
+    this.injectImage();
   }
 
   injectImage() {
     this.cardComponent = this.vcr.createComponent(this.cardCompFact);
     this.cardComponent.instance.card = this.card;
+    this.cardComponent.instance.isAnimate = 'in';
   }
 
   destroyImage() {
-    // this.cardComponent.destroy();
     this.vcr.detach(1);
   }
 }

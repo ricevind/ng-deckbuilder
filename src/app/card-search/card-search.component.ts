@@ -3,7 +3,8 @@ import { Card } from '../shared/models/card';
 import { Subject } from 'rxjs/Subject';
 import { HsApiService } from './hs-api.service';
 import { DeckService } from '../deck/deck.service';
-import { SearchForm } from './card-search-form/card-search-form.component';
+import { SearchFormInterface } from './card-search-form/card-search-form.component';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'card-search',
@@ -15,6 +16,8 @@ export class CardSearchComponent implements OnInit {
   callForCards: Subject<any> = new Subject();
   loading: boolean;
   filter: string;
+  rarity: string;
+  previousClass: string;
 
   constructor(
     private hsApi: HsApiService,
@@ -25,11 +28,18 @@ export class CardSearchComponent implements OnInit {
     this.callForCards
       .do(() => this.loading = true)
       .switchMap((e) => {
-        console.log(e);
+        if (e.class === this.previousClass) {
+          this.loading = false;
+          return Observable.of(this.cards);
+        }
         if (e.class) {
+          this.previousClass = e.class;
           return this.hsApi.getCardsByClass(e.class).finally(() => this.loading = false);
-        } else {
+        } else if (e.search) {
           return this.hsApi.searchCards(e.search).finally(() => this.loading = false);
+        } else {
+          this.loading = false;
+          return Observable.of(this.cards);
         }
       })
       .subscribe(r => {
@@ -39,8 +49,9 @@ export class CardSearchComponent implements OnInit {
   }
 
 
-  query(query: SearchForm): void {
-    this.filter = query.search;
+  query(query: SearchFormInterface): void {
+    this.filter = query.search ? query.search : '';
+    this.rarity = query.filters.rarity ? query.filters.rarity : '';
     this.callForCards.next(query);
   }
 

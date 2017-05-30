@@ -5,10 +5,10 @@ import { InfoService } from '../../info.service';
 import { Query } from '../../shared/models/query';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-export class SearchForm {
+class SearchForm {
   search = '';
   class = '';
-  filters: Filters;
+  filters: FormGroup;
 }
 
 class Filters {
@@ -17,6 +17,12 @@ class Filters {
     health = '';
     rarity = '';
   };
+
+export class SearchFormInterface {
+  search = '';
+  class = '';
+  filters: Filters;
+}
 
 @Component({
   selector: 'card-search-form',
@@ -41,18 +47,16 @@ export class CardSearchFormComponent implements OnInit {
     .distinctUntilChanged()
     .subscribe((value) => {
       if (!value.search && !value.class) {
-        console.log('clear motefuka')
         this.clear();
         return;
       }
-      console.log('form emit')
       this.onQuery.emit(value);
     });
   }
 
   buildForm() {
     const formModel = new SearchForm();
-    formModel.filters = new Filters();
+    formModel.filters = this.fb.group(new Filters());
     this.searchForm = this.fb.group(formModel);
   }
 

@@ -1,8 +1,15 @@
   <form [formGroup]="searchForm">
     <input type="text" formControlName="search"> 
     <select  formControlName="class">
-      <option value="" disabled selected>Klasa</option>
+      <option value="" >Klasa:clear</option>
       <option *ngFor="let class of info?.classes" name="classSelect" [value]="class">{{class}}</option>
     </select>
+    <ng-container formGroupName="filters">
+      <select  formControlName="rarity">
+        <option value="" >Rarity: clear</option>
+        <option *ngFor="let rarity of info?.qualities" name="raritySelect" [value]="rarity">{{rarity}}</option>
+    </select>
+    </ng-container>
+    
     <span (click)="clear()">x</span>
   </form>

@@ -9,6 +9,7 @@ import { CardSearchFormComponent } from './card-search-form/card-search-form.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardSearchComponent } from './card-search.component';
 import { CardFilterPipe } from './card-search-filter.pipe';
+import { CardRarityPipe } from './card-search-rarity.pipe';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { CardFilterPipe } from './card-search-filter.pipe';
     CardSearchViewComponent,
     CardSearchFormComponent,
     CardSearchComponent,
-    CardFilterPipe
+    CardFilterPipe,
+    CardRarityPipe
   ],
   exports: [
     CardSearchComponent

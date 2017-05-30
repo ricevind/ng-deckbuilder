@@ -1,6 +1,9 @@
 <div #cardDiv [@dialog]="isAnimate"
     class="app-card"
     [hidden]="!isLoaded"
-    (click)="onClick()"> 
+    (click)="onClick()">
 </div>
-
+<img src="assets/placecholder.png"
+         *ngIf="!isLoaded"
+         class="app-card"
+    >

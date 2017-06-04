@@ -7,9 +7,9 @@ import { CardComponent } from '../../shared/card/card.component';
 import { Card } from '../../shared/models/card';
 
 const RARITY_COLOR = {
-  'Free': 'white',
+  'Free': 'lighgrey',
   'Common': 'grey',
-  'Rare': 'blue',
+  'Rare': 'lightblue',
   'Epic': 'purple',
   'Legendary': 'orange'
 };

@@ -10,13 +10,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardSearchComponent } from './card-search.component';
 import { CardFilterPipe } from './card-search-filter.pipe';
 import { CardRarityPipe } from './card-search-rarity.pipe';
+import { MdProgressSpinnerModule, MdSelectModule, MdInputModule, MdButtonModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     CardSearchRoutingModule,
-    SharedModule
+    SharedModule,
+    MdProgressSpinnerModule,
+    MdSelectModule,
+    MdButtonModule,
+    MdInputModule
   ],
   declarations: [
     CardSearchViewComponent,

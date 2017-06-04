@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DeckComponent implements OnInit {
   public deck: Deck;
+  public info: boolean;
 
   constructor(
     private deckService: DeckService,
@@ -22,7 +23,6 @@ export class DeckComponent implements OnInit {
 
   ngOnInit() {
         const savedDeck = this.route.snapshot.data['deck'];
-        console.log(savedDeck);
         if (savedDeck.cards) {
           this.deckService.initSubject(savedDeck);
         } else {
@@ -38,7 +38,11 @@ export class DeckComponent implements OnInit {
   }
 
   onSaveDeck(): void {
-    this.databaseService.saveDeck(this.deck);
+    this.databaseService.saveDeck(this.deck)
+    .subscribe(() => {
+      this.info = true;
+      setTimeout(() => this.info = false, 1000);
+    });
   }
 
 }

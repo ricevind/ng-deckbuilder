@@ -1,4 +1,33 @@
-:host {
+
+.card-view__container {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
+  z-index: 100;
+  justify-content: space-around;
+  align-content: flex-start;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.loading {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.loader {
+  height:100%;
+  width: 100%;
+  background-color: rgba(244, 67, 54, 0.1);
+  position: absolute;
+  z-index: 101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  md-spinner {
+    width: 80%;
+    height: 80%;
+  }
 }

@@ -1,6 +1,28 @@
-<p>
-  <input type="email" [(ngModel)]="email">
-  <input type="password" [(ngModel)]="password">
-  <input type="password" [(ngModel)]="passwordCopy">
-  <button type="button" (click)="onClick()">Login</button>
-</p>
+<div class="signup-wrapper">
+  <div class="signup-wrapper__content">
+  <md-input-container>
+    <input mdInput 
+           placeholder="Email" 
+           type="email" 
+           [(ngModel)]="email">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput 
+           placeholder="Password" 
+           type="password" 
+           [(ngModel)]="password">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput 
+           placeholder="Repeat password" 
+           type="password" 
+           [(ngModel)]="passwordCopy">
+  </md-input-container>
+  <button type="button" 
+          md-raised-button
+          (keyup.enter)="onClick()" 
+          (click)="onClick()">
+            Sign up
+  </button>
+  </div>
+</div>

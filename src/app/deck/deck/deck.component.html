@@ -4,5 +4,11 @@
               [cardCount]="card.count"
               (removeCard)="onRemoveCard($event)">
     </card-bar>
-    <button type="button" (click)="onSaveDeck()">Save</button>
+    <button md-raised-button 
+            class="save-button" 
+            type="button"
+            [disabled]="info" 
+            (click)="onSaveDeck()">
+              {{info ? 'Saved!' : 'Save'}}
+    </button>
 </div>

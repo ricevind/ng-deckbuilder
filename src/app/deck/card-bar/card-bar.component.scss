@@ -12,6 +12,11 @@
 .card-bar__cost {
   margin-left: auto;
 }
+.card-bar__name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
 .card-bar__count {
   padding-right: 30px;

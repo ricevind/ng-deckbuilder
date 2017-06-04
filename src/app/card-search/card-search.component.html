@@ -1,10 +1,14 @@
-<card-search-form (onClear)="clear()" 
-                  (onQuery)="query($event)">
-</card-search-form>
-<div *ngIf="loading">its loading</div>
-
-<card-search-view [cards]="cards"
-                  [filter]="filter"
-                  [rarity]="rarity"
-                  (addCard)="addCardToDeck($event)">
-</card-search-view>
+<div class="card-search__container">
+  <div class="card-search__form">
+    <card-search-form (onClear)="clear()" 
+                      (onQuery)="query($event)">
+    </card-search-form>
+  </div>
+  <div class="card-search__view">
+    <card-search-view [cards]="cards"
+                      [filter]="filter"
+                      [rarity]="rarity"
+                      (addCard)="addCardToDeck($event)">
+    </card-search-view>
+  </div>
+</div>

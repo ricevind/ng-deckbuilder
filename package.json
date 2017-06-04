@@ -11,7 +11,8 @@
     "e2e": "protractor ./protractor.conf.js",
     "hmr": "ng serve --hmr -e=hmr --port=8080",
     "prepree2e": "npm start",
-    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet"
+    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
+    "deploy": "ng build -sm -ec -bh ng-deckbuilder & ngh"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,7 @@
     "angularfire2": "^4.0.0-rc.0",
     "core-js": "^2.4.1",
     "firebase": "^3.9.0",
+    "reset-css": "^2.2.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

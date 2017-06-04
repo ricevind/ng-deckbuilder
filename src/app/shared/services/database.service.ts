@@ -20,11 +20,11 @@ export class DatabaseService {
     });
   }
 
-  saveDeck(deck: Deck) {
-      this.userDeck.set({
+  saveDeck(deck: Deck): Observable<any> {
+      return Observable.of(this.userDeck.set({
         cards: deck.cards,
         name: deck.name
-      });
+      }));
   }
 
   retriveDeck(): Observable<Deck> {

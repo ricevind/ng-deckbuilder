@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/reset-css/reset.css";
 
-@import 'variables';
-@import '../node_modules/bootstrap/scss/bootstrap';
+* {
+ box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: normal;
+}
 
 .app-card {
   display: inline-block;
@@ -9,10 +17,15 @@
   height: 240px;
   overflow: hidden;
   position: relative;
-  & img {
+  
+  img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -52%)  scale(0.6);
+  }
+
+  &.hidden {
+    display: none;
   }
 }

@@ -17,16 +17,15 @@ export class SignupComponent implements OnInit {
   }
 
   onClick() {
-    if (this.password === this.passwordCopy) {
+    if (this.email && this.password && this.password === this.passwordCopy) {
       this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
       .then(() => alert('konto utworzone, zaloguj się w /login'))
       .catch((e) => {
         alert('coś poszło nie tak upss...');
-        console.log(e);
       }) ;
       return;
     }
-    alert('passwor dont match');
+    alert('passwor dont match or no email provided');
   }
 
 }

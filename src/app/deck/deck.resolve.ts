@@ -3,7 +3,6 @@ import { Resolve } from '@angular/router';
 import { DatabaseService } from '../shared/services/database.service';
 import { Deck } from '../shared/models/deck';
 import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class DeckResolve implements Resolve<Deck> {
@@ -13,8 +12,6 @@ export class DeckResolve implements Resolve<Deck> {
   ) {}
 
   resolve(): any {
-    console.log(this.db.retriveDeck());
-    return this.db.retriveDeck().delay(400).first();
+    return this.db.retriveDeck().first();
   }
-
 }

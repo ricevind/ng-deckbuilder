@@ -19,8 +19,9 @@ import { trigger, transition, style, animate, state } from "@angular/animations"
 export class CardComponent implements OnInit, OnDestroy {
   @Input() card: Card;
   @Output() sendCard = new EventEmitter();
+  @Output() onLoaded = new EventEmitter();
   @ViewChild('cardDiv') cardElement: ElementRef;
-  @HostBinding('@dialog') get dialog() {return this.isAnimate};
+  @HostBinding('@dialog') get dialog() { return this.isAnimate; };
 
   public image: HTMLImageElement;
   public isLoaded = false;
@@ -35,6 +36,8 @@ export class CardComponent implements OnInit, OnDestroy {
         this.image = image.cloneNode(false) as HTMLImageElement;
         this.cardElement.nativeElement.append(this.image);
         this.isLoaded = true;
+        this.onLoaded.emit();
+        console.log('shuld emit')
       });
   }
 

@@ -1,14 +1,29 @@
-<div class="nav">
-  <a routerLink='login'>Login</a>
-  <a routerLink='build-deck'>Deck Builder</a>
-  <span  class="nav__signup">
-    <a routerLink='signup'>
-        Register
+<div class="nav-wrapper">
+  <loader></loader>
+  <div class="nav">
+    <a md-raised-button 
+       routerLinkActive="active-link"  
+       routerLink='login'>
+        Login
     </a>
-    <a (click)="logout()"
-       *ngIf="isLogged"
-        class="nav__signup">
-        Log out
+    <a md-raised-button 
+       routerLinkActive="active-link" 
+       routerLink='build-deck'>
+        Deck Builder
     </a>
-  </span>
+    <span  class="nav__signup">
+      <a md-raised-button 
+         routerLinkActive="active-link" 
+         routerLink='signup' 
+         *ngIf="!isLogged">
+          Register
+      </a>
+      <a md-raised-button  (click)="logout()"
+          *ngIf="isLogged"
+          [ngClass]="{'logged': isLogged}"
+          class="nav__signup">
+          Log out
+      </a>
+    </span>
+  </div>
 </div>

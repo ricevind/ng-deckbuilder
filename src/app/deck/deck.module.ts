@@ -6,11 +6,13 @@ import { DeckService } from './deck.service';
 import { DeckResolve } from './deck.resolve';
 import { RarityDirective } from './card-bar/rarity.directive';
 import { SharedModule } from '../shared/shared.module';
+import { MdButtonModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MdButtonModule
   ],
   declarations: [
     DeckComponent,

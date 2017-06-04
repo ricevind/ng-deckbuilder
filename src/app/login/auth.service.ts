@@ -12,15 +12,18 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
-  constructor(private auth: AngularFireAuth, private router: Router) { }
-    canActivate(): Observable<boolean> {
-      return this.auth.authState
-        .take(1)
-        .map((state: firebase.User) => !!state)
-        .do(authentiated => {
-          if (!authentiated) {
-            this.router.navigateByUrl('/login');
-          }
-        });
-    }
+  constructor(
+    private auth: AngularFireAuth, private router: Router
+    ) { }
+
+  canActivate(): Observable<boolean> {
+    return this.auth.authState
+      .take(1)
+      .map((state: firebase.User) => !!state)
+      .do(authenticated => {
+        if (!authenticated) {
+          this.router.navigateByUrl('/login');
+        }
+      });
+  }
 }

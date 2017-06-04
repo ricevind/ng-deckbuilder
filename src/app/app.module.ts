@@ -14,11 +14,14 @@ import { AngularFireModule } from 'angularfire2/angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SharedModule } from './shared/shared.module';
+import { FooterComponent } from './footer/footer.component';
+import { MdIconModule, MdButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,9 @@ import { SharedModule } from './shared/shared.module';
     DeckBuilderModule,
     LoginModule,
     SharedModule,
+    MdIconModule,
+    MdButtonModule
+
   ],
   providers: [InfoService],
   bootstrap: [AppComponent]

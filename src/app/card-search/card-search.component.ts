@@ -14,7 +14,6 @@ import { Observable } from 'rxjs/Observable';
 export class CardSearchComponent implements OnInit {
   cards: Card[];
   callForCards: Subject<any> = new Subject();
-  loading: boolean;
   filter: string;
   rarity: string;
   previousClass: string;
@@ -26,19 +25,16 @@ export class CardSearchComponent implements OnInit {
 
   ngOnInit() {
     this.callForCards
-      .do(() => this.loading = true)
       .switchMap((e) => {
         if (e.class === this.previousClass) {
-          this.loading = false;
           return Observable.of(this.cards);
         }
         if (e.class) {
           this.previousClass = e.class;
-          return this.hsApi.getCardsByClass(e.class).finally(() => this.loading = false);
+          return this.hsApi.getCardsByClass(e.class);
         } else if (e.search) {
-          return this.hsApi.searchCards(e.search).finally(() => this.loading = false);
+          return this.hsApi.searchCards(e.search);
         } else {
-          this.loading = false;
           return Observable.of(this.cards);
         }
       })

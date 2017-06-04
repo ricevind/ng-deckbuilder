@@ -1,14 +1,19 @@
   <form [formGroup]="searchForm">
-    <input type="text" formControlName="search"> 
-    <select  formControlName="class">
-      <option value="" >Klasa:clear</option>
-      <option *ngFor="let class of info?.classes" name="classSelect" [value]="class">{{class}}</option>
-    </select>
+    <md-input-container>
+    <input mdInput 
+           placeholder="Your query..." 
+           type="text" 
+           formControlName="search">
+     </md-input-container>
+    <md-select placeholder="Select class" formControlName="class">
+      <md-option value="" >Klasa:clear</md-option>
+      <md-option *ngFor="let class of info?.classes" name="classSelect" [value]="class">{{class}}</md-option>
+    </md-select>
     <ng-container formGroupName="filters">
-      <select  formControlName="rarity">
-        <option value="" >Rarity: clear</option>
-        <option *ngFor="let rarity of info?.qualities" name="raritySelect" [value]="rarity">{{rarity}}</option>
-    </select>
+      <md-select placeholder="Select rarity" formControlName="rarity">
+        <md-option value="" >Rarity: clear</md-option>
+        <md-option *ngFor="let rarity of info?.qualities" name="raritySelect" [value]="rarity">{{rarity}}</md-option>
+    </md-select>
     </ng-container>
     
     <span (click)="clear()">x</span>

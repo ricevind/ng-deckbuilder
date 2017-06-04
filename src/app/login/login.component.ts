@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   onClick() {
-    console.log('enter')
     this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
       .then(() => this.router.navigateByUrl('/build-deck'))
       .catch((err: Error) => {

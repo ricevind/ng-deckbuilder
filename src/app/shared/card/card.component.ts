@@ -37,7 +37,6 @@ export class CardComponent implements OnInit, OnDestroy {
         this.cardElement.nativeElement.append(this.image);
         this.isLoaded = true;
         this.onLoaded.emit();
-        console.log('shuld emit')
       });
   }
 

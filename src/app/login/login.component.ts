@@ -8,7 +8,7 @@ import { Error} from 'firebase/auth';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   public email: any;
   public password: any;
 
@@ -16,9 +16,6 @@ export class LoginComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private router: Router
   ) { }
-
-  ngOnInit() {
-  }
 
   onClick() {
     this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)

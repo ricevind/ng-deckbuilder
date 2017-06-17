@@ -12,7 +12,7 @@
     "hmr": "ng serve --hmr -e=hmr --port=8080",
     "prepree2e": "npm start",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
-    "deploy": "ng build -sm -ec -bh ng-deckbuilder & ngh"
+    "deploy": "ng build --prod --output-path docs --base-href ng-deckbuilder" 
   },
   "private": true,
   "dependencies": {

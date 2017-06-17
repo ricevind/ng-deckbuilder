@@ -1,13 +1,12 @@
 <div class="card-view__container"
-     [ngClass]="{'loading': (length && length > 5)}">
+     [ngClass]="{'loading': isLoading}">
      <div class="loader"
-          *ngIf="length && length > 5">
+          *ngIf="isLoading">
       <md-spinner>
       </md-spinner>
     </div>
     <ng-container *ngIf="cards">
         <card (sendCard)="cardClick($event)"
-              (onLoaded)="onLoaded()"  
               *ngFor="let card of cards | cardFilter:filter | cardRarity:rarity" 
               [card]="card">
         </card>

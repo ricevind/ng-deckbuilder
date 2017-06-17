@@ -5,6 +5,7 @@ import { HsApiService } from './hs-api.service';
 import { DeckService } from '../deck/deck.service';
 import { SearchFormInterface } from './card-search-form/card-search-form.component';
 import { Observable } from 'rxjs/Observable';
+import { CardsImageService } from '../shared/services/cards-image.service';
 
 @Component({
   selector: 'card-search',
@@ -17,13 +18,18 @@ export class CardSearchComponent implements OnInit {
   filter: string;
   rarity: string;
   previousClass: string;
+  loading: boolean;
 
   constructor(
     private hsApi: HsApiService,
-    private deckService: DeckService
+    private deckService: DeckService,
+    private cis: CardsImageService
   ) {}
 
   ngOnInit() {
+    this.cis.isLoadingImages
+      .subscribe(l => this.loading = l);
+
     this.callForCards
       .switchMap((e) => {
         if (e.class === this.previousClass) {

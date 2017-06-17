@@ -1,8 +1,11 @@
-import { Component, OnInit, Input, OnDestroy, ViewChild, Output, EventEmitter, ElementRef, AfterViewInit, HostBinding } from '@angular/core';
+import {
+  Component, OnInit, Input, OnDestroy, ViewChild, Output, EventEmitter, ElementRef, AfterViewInit,
+  HostBinding
+} from '@angular/core';
 import { Card } from '../models/card';
 import { CardsImageService } from '../services/cards-image.service';
 import { Subscription } from 'rxjs/Subscription';
-import { trigger, transition, style, animate, state } from "@angular/animations";
+import { trigger, transition, style, animate, state } from '@angular/animations';
 
 @Component({
   selector: 'card',
@@ -19,7 +22,6 @@ import { trigger, transition, style, animate, state } from "@angular/animations"
 export class CardComponent implements OnInit, OnDestroy {
   @Input() card: Card;
   @Output() sendCard = new EventEmitter();
-  @Output() onLoaded = new EventEmitter();
   @ViewChild('cardDiv') cardElement: ElementRef;
   @HostBinding('@dialog') get dialog() { return this.isAnimate; };
 
@@ -36,10 +38,8 @@ export class CardComponent implements OnInit, OnDestroy {
         this.image = image.cloneNode(false) as HTMLImageElement;
         this.cardElement.nativeElement.append(this.image);
         this.isLoaded = true;
-        this.onLoaded.emit();
       });
   }
-
 
   ngOnDestroy() {
     this.image$.unsubscribe();

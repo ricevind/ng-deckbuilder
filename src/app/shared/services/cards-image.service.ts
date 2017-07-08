@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/observable/fromEvent';
 
 @Injectable()
 export class CardsImageService {
@@ -37,7 +38,7 @@ export class CardsImageService {
 
   private checkLoading(): void {
     this._loaderCount -= 1;
-    console.log(this._loaderCount)
+    console.log(this._loaderCount);
     if (this._loaderCount === 0) {
       this._imagesLoading$.next(false);
     }

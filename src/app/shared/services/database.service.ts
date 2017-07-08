@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import { User } from '../models/user';
 import { Deck } from '../models/deck';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class DatabaseService {
